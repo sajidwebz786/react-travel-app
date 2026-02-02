@@ -552,7 +552,7 @@ ul {
 }
 @media(max-width:767px) {   
   .logo img {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     left: 0;
     right: 0;

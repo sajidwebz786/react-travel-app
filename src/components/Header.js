@@ -76,7 +76,7 @@ const Header = () => {
                   </ul>
                 </div>
                 
-                {/* Mobile Hamburger Button */}
+                {/* Mobile Hamburger Button - Always visible on mobile */}
                 <button 
                   className="mobile-menu-toggle"
                   onClick={toggleMobileMenu}
@@ -110,7 +110,7 @@ const Header = () => {
         }
         
         .mobile-menu-toggle {
-          display: none;
+          display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
@@ -121,7 +121,7 @@ const Header = () => {
           cursor: pointer;
           padding: 0;
           position: absolute;
-          right: 0;
+          right: 15px;
           top: 50%;
           transform: translateY(-50%);
           z-index: 1001;
@@ -129,10 +129,10 @@ const Header = () => {
         
         .hamburger-line {
           display: block;
-          width: 25px;
+          width: 22px;
           height: 3px;
           background-color: #000;
-          margin: 3px 0;
+          margin: 2.5px 0;
           transition: all 0.3s ease;
           border-radius: 2px;
         }
@@ -164,6 +164,7 @@ const Header = () => {
         }
         
         .mobile-nav.open {
+          display: block;
           max-height: 500px;
         }
         
@@ -195,22 +196,66 @@ const Header = () => {
           color: green;
         }
         
-        /* Mobile Responsive Styles */
-        @media (max-width: 767px) {
-          .desktop-nav {
-            display: none;
-          }
-          
+        /* Desktop view - hide mobile button, show desktop nav */
+        @media (min-width: 768px) {
           .mobile-menu-toggle {
-            display: flex;
+            display: none !important;
           }
           
           .mobile-nav {
-            display: block;
+            display: none !important;
+          }
+          
+          .desktop-nav {
+            display: block !important;
+          }
+        }
+        
+        /* Mobile view - show mobile button, hide desktop nav */
+        @media (max-width: 767px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          
+          .mobile-menu-toggle {
+            display: flex !important;
           }
           
           .navigation {
             position: relative;
+            min-height: 50px;
+          }
+          
+          .col-sm-9 {
+            position: static;
+          }
+          
+          /* Mobile logo positioning - keep left aligned */
+          .nav-bar .logo {
+            text-align: left !important;
+            display: block;
+          }
+          
+          .nav-bar .logo img {
+            margin: 0 !important;
+            display: block !important;
+            float: left;
+          }
+          
+          .nav-bar .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          
+          .nav-bar .col-sm-3 {
+            width: auto;
+            flex: 0 0 auto;
+          }
+          
+          .nav-bar .col-sm-9 {
+            width: auto;
+            flex: 0 0 auto;
           }
         }
         
